@@ -6,7 +6,7 @@
 /*   By: rcarette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 03:29:15 by rcarette          #+#    #+#             */
-/*   Updated: 2017/07/11 04:05:01 by rcarette         ###   ########.fr       */
+/*   Updated: 2017/07/11 05:34:58 by rcarette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int				ft_strlen_table(char **table)
 
 	ite = 0;
 	if (!table || !*table)
-	{
-		printf("NULL\n");
-		return (0);
-	}
+		return (ft_error_strlen_table());
 	while (table[ite])
 		++ite;
 	return (ite);

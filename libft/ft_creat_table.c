@@ -6,7 +6,7 @@
 /*   By: rcarette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 04:05:30 by rcarette          #+#    #+#             */
-/*   Updated: 2017/07/11 05:33:00 by rcarette         ###   ########.fr       */
+/*   Updated: 2017/07/11 05:44:12 by rcarette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,5 @@ char			**ft_creat_table(char *str, int x)
 	table = ft_apply(cell, line, str, x);
 	free(cell);
 	return (table);
+
 }
