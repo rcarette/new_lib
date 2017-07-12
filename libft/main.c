@@ -6,7 +6,7 @@
 /*   By: rcarette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 23:24:50 by rcarette          #+#    #+#             */
-/*   Updated: 2017/07/12 02:06:31 by rcarette         ###   ########.fr       */
+/*   Updated: 2017/07/12 09:50:42 by rcarette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,21 @@ int main(int argc, const char *argv[], char **ev)
 
 	i = -1;
 	size = 0;
-	str = ft_strnew(ft_count_character_in_table(ev) + 1);
-	while (ev[++i])
-	{
-		ft_strcat(str, ev[i]);
-		ft_strcat(str, "\n");
-	}
+	str = ft_duptab(ev);
 	table = ft_creat_table(str, '\n');
-	i = -1;
-	ft_add_cell_in_table(&table, "Romain=toto");
-	ft_add_cell_in_table(&table, "Carette=toto");
-	ft_add_cell_in_table(&table, "Hello=coco");
-	ft_memdel((void *)&str);
+	ft_print_table(table);
+	ft_delspace_table(&table);
+	ft_putendl("-------------");
+	ft_cell_del(&table, "HOME=/Users/rcarette");
+	ft_cell_del(&table, "TERM_SESSION_ID=w1t0p1:3CB2DDBB-496C-4551-B07D-F64430EC985E");
+	ft_modify_cell(&table, "USER","       USER=Hello");
+	ft_cell_del(&table, "COLORFGBG=7;0");
+	ft_print_table(table);
+	ft_putendl("---------------");
+	char *tmp = ft_get_line(table, "OLDPWD", '=');
+	ft_putendl(tmp);
+	ft_memdel((void *)&tmp);
 	ft_clr_table(table);
-	ft_print_table(NULL);
+	ft_memdel((void *)&str);
 	return 0;
 }

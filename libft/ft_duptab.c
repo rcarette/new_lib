@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clr_table.c                                     :+:      :+:    :+:   */
+/*   ft_duptab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcarette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/12 01:24:57 by rcarette          #+#    #+#             */
-/*   Updated: 2017/07/12 08:39:54 by rcarette         ###   ########.fr       */
+/*   Created: 2017/07/12 05:17:17 by rcarette          #+#    #+#             */
+/*   Updated: 2017/07/12 06:41:09 by rcarette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_clr_table(char **table)
+char	*ft_duptab(char **table)
 {
+	char	*str;
+	char	*tmp;
 	int		i;
 
-	if (table)
+	i = -1;
+	str = NULL;
+	if (!table || !*table)
 	{
-		i = -1;
-		while (table[++i])
-			ft_memdel((void *)&table[i]);
-		free(table);
-		table = NULL;
+		ft_putendl("ft_duptab: table == NULL || table[0] == NULL");
+		ft_putendl("ft_duptab: return NULL");
+		return (NULL);
 	}
-	else
-		ft_putendl("ft_clr_table: table == NULL");
+	str = ft_strnew(ft_count_character_in_table(table));
+	ft_memset(str, '\0', ft_count_character_in_table(table));
+	while (table[++i])
+	{
+		ft_strcat(str, table[i]);
+		ft_strcat(str, "\n");
+	}
+	return (str);
 }

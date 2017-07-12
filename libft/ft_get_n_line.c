@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clr_table.c                                     :+:      :+:    :+:   */
+/*   ft_get_n_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcarette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/12 01:24:57 by rcarette          #+#    #+#             */
-/*   Updated: 2017/07/12 08:39:54 by rcarette         ###   ########.fr       */
+/*   Created: 2017/07/12 08:30:47 by rcarette          #+#    #+#             */
+/*   Updated: 2017/07/12 09:50:16 by rcarette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_clr_table(char **table)
+char	*ft_get_line(char **table, const char *name, int x)
 {
 	int		i;
+	char	*cpy;
+	int		size;
 
-	if (table)
+	if (!table || !name || !ft_strlen(name))
 	{
-		i = -1;
-		while (table[++i])
-			ft_memdel((void *)&table[i]);
-		free(table);
-		table = NULL;
+		ft_putendl("ft_get_line: table || name == NULL");
+		ft_putendl("function ft_get_line: return NULL");
+		return (NULL);
 	}
-	else
-		ft_putendl("ft_clr_table: table == NULL");
+	i = -1;
+	size = ft_strlen(name);
+	while (table[++i])
+		if (!ft_strncmp(table[i], name, size))
+		{
+			cpy = ft_strdup(&table[i][size + 1]);
+			return (cpy);
+		}
+	return (NULL);
 }

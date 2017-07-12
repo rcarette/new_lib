@@ -6,7 +6,7 @@
 /*   By: rcarette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 04:05:30 by rcarette          #+#    #+#             */
-/*   Updated: 2017/07/12 01:42:55 by rcarette         ###   ########.fr       */
+/*   Updated: 2017/07/12 04:24:21 by rcarette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 static int		ft_count_line(char *str, int c)
 {
 	int		size;
+	int		i;
+	int		nbr_str;
 
-	size = 0;
-	while (*str)
+	size = 1;
+	i = -1;
+	nbr_str = ft_strlen(str);
+	while (str[++i])
 	{
-		(*str != c) ? ++size : 0;
-		while (*str != c)
-			++str;
-		(*str == c) ? ++str : 0;
+		if (str[i] == c && str[i + 1] != '\0' && str[i + 1] != c)
+			++size;
 	}
 	return (size);
 }
@@ -30,26 +32,26 @@ static int		ft_count_line(char *str, int c)
 static int		*ft_cell(char *str, int x, int line)
 {
 	int		*table_cell;
-	int		size;
 	int		i;
+	int		j;
+	int		size;
 
 	i = -1;
+	j = -1;
 	if (!(table_cell = (int *)malloc(sizeof(int) * line)))
 		exit(EXIT_FAILURE);
-	while (*str)
+	while (str[++j])
 	{
-		if (*str != x)
+		if (str[j] != x)
 		{
 			size = 0;
-			while (*str != x)
+			while (str[j] && str[j] != x)
 			{
 				++size;
-				++str;
+				++j;
 			}
 			table_cell[++i] = size;
 		}
-		else
-			++str;
 	}
 	return (table_cell);
 }
@@ -62,7 +64,7 @@ static char		**ft_apply(int *cell, int line, char *str, int x)
 	table = NULL;
 	i[0] = -1;
 	i[1] = -1;
-	if (!(table = (char **)malloc(sizeof(char *) * line)))
+	if (!(table = (char **)malloc(sizeof(char *) * (line + 1))))
 		return (table);
 	while (*str)
 	{
@@ -88,8 +90,10 @@ char			**ft_creat_table(char *str, int x)
 	int		line;
 	int		*cell;
 	char	**table;
+	int		i;
 
-	line = 1;
+	i = -1;
+	line = 0;
 	if (!str || !ft_strlen(str))
 	{
 		ft_putendl("ft_creat_table: var str == NULL || str == \"\"");

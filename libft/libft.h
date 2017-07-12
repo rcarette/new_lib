@@ -6,7 +6,7 @@
 /*   By: rcarette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/13 02:51:56 by rcarette          #+#    #+#             */
-/*   Updated: 2017/07/12 02:00:29 by rcarette         ###   ########.fr       */
+/*   Updated: 2017/07/12 09:44:07 by rcarette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,11 @@ void				ft_clr_table(char **table);
 int					ft_strlen_table(char **table);
 int					ft_count_character_in_table(char **table);
 void				ft_add_cell_in_table(char ***table, const char *new_cell);
+void				ft_delspace_table(char ***table);
+void				ft_cell_del(char ***table, char *value);
+void				ft_modify_cell(char ***table, char *name_value, \
+																char *value);
+char				*ft_duptab(char **table);
+char				*ft_get_line(char **table, const char *name, int x);
 
 #endif
