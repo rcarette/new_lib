@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_count_table.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcarette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/17 12:11:16 by rcarette          #+#    #+#             */
-/*   Updated: 2017/07/12 00:54:07 by rcarette         ###   ########.fr       */
+/*   Created: 2017/07/11 23:32:16 by rcarette          #+#    #+#             */
+/*   Updated: 2017/07/12 00:55:25 by rcarette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *dest, const char *src)
+int		ft_count_character_in_table(char **table)
 {
-	int		len;
 	int		i;
+	int		size;
 
+	if (!table)
+	{
+		ft_putendl("ft_count_table: table == NULL");
+		ft_putendl("ft_count_table: return 0");
+		return (0);
+	}
 	i = -1;
-	len = -1;
-	if (!dest || !src)
-		return (NULL);
-	while (dest[++i])
-		;
-	while (src[++len])
-		dest[i + len] = src[len];
-	return (dest);
+	size = 0;
+	while (table[++i])
+		size += (ft_strlen(table[i]));
+	return (size + ft_strlen_table(table));
 }

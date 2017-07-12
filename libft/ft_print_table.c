@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_print_table.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcarette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/17 12:11:16 by rcarette          #+#    #+#             */
-/*   Updated: 2017/07/12 00:54:07 by rcarette         ###   ########.fr       */
+/*   Created: 2017/07/12 02:03:55 by rcarette          #+#    #+#             */
+/*   Updated: 2017/07/12 02:06:00 by rcarette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *dest, const char *src)
+void	ft_print_table(char **table)
 {
-	int		len;
 	int		i;
 
 	i = -1;
-	len = -1;
-	if (!dest || !src)
-		return (NULL);
-	while (dest[++i])
-		;
-	while (src[++len])
-		dest[i + len] = src[len];
-	return (dest);
+	if (table)
+	{
+		while (table[++i])
+			ft_putendl(table[i]);
+	}
+	else
+		ft_putendl("ft_print_table: table = NULL");
 }

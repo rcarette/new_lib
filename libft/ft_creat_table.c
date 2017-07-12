@@ -6,7 +6,7 @@
 /*   By: rcarette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 04:05:30 by rcarette          #+#    #+#             */
-/*   Updated: 2017/07/11 05:44:12 by rcarette         ###   ########.fr       */
+/*   Updated: 2017/07/12 01:42:55 by rcarette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,11 @@ static char		**ft_apply(int *cell, int line, char *str, int x)
 	char	**table;
 	int		i[3];
 
+	table = NULL;
 	i[0] = -1;
 	i[1] = -1;
 	if (!(table = (char **)malloc(sizeof(char *) * line)))
-		return (NULL);
+		return (table);
 	while (*str)
 	{
 		if (*str != x)
